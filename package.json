@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && gh-pages -d dist --nojekyll --message 'Deploy: $(date '+%Y-%m-%d %H:%M:%S')'",
+    "deploy": "npm run build && gh-pages -d dist --nojekyll --message 'Deploy $(date +%Y-%m-%d_%H:%M:%S)'",
     "build:gh": "npm run build && cp ./CNAME ./dist/CNAME || true"
   },
   "dependencies": {
