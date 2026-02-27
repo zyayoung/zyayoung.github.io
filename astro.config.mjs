@@ -8,5 +8,23 @@ export default defineConfig({
 	output: 'static',
 	build: {
 		outDir: './dist'
+	},
+	vite: {
+		plugins: [
+			{
+				name: 'add-nojekyll',
+				closeBundle() {
+					import('fs').then(fs => {
+						const nojekyllPath = './dist/.nojekyll';
+						try {
+							fs.writeFileSync(nojekyllPath, '');
+							console.log('Created .nojekyll file for GitHub Pages');
+						} catch (err) {
+							console.error('Failed to create .nojekyll file:', err);
+						}
+					});
+				}
+			}
+		]
 	}
 });
