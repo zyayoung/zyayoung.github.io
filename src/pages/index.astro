@@ -1,17 +1,764 @@
 ---
-
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Yuang Zhang - Researcher at Shanghai Jiao Tong University. Research on video generation, aerial robots, and multi-object tracking." />
+	<meta name="generator" content={Astro.generator} />
+	<title>Yuang Zhang</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+	<style>
+	  * {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	  }
+
+	  body {
+		font-family: 'Source Sans 3', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-size: 16px;
+		line-height: 1.65;
+		color: #333;
+		background-color: #fff;
+	  }
+
+	  a {
+		color: #1772d0;
+		text-decoration: none;
+	  }
+	  a:hover {
+		color: #f09228;
+		text-decoration: none;
+	  }
+
+	  .container {
+		max-width: 860px;
+		margin: 0 auto;
+		padding: 20px 30px 60px;
+	  }
+
+	  /* === Header / Bio === */
+	  .bio-section {
+		display: flex;
+		gap: 36px;
+		align-items: flex-start;
+		padding: 40px 0 10px;
+	  }
+	  .bio-photo {
+		flex-shrink: 0;
+	  }
+	  .bio-photo img {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		object-fit: cover;
+		border: 3px solid #eee;
+	  }
+	  .bio-text {
+		flex: 1;
+	  }
+	  .bio-text h1 {
+		font-size: 28px;
+		font-weight: 700;
+		color: #222;
+		margin-bottom: 12px;
+	  }
+	  .bio-text p {
+		font-size: 15px;
+		color: #444;
+		margin-bottom: 8px;
+	  }
+	  .bio-links {
+		margin-top: 14px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px 18px;
+		font-size: 15px;
+	  }
+	  .bio-links a {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+	  }
+
+	  /* === Section titles === */
+	  .section-title {
+		font-size: 22px;
+		font-weight: 700;
+		color: #222;
+		padding-bottom: 8px;
+		border-bottom: 2px solid #eee;
+		margin: 40px 0 20px;
+	  }
+
+	  /* === News === */
+	  .news-list {
+		list-style: none;
+		font-size: 15px;
+	  }
+	  .news-list li {
+		padding: 1px 0;
+		display: flex;
+		gap: 12px;
+	  }
+	  .news-date {
+		flex-shrink: 0;
+		color: #888;
+		font-size: 14px;
+		min-width: 90px;
+	  }
+
+	  /* === Publication entry === */
+	  .pub-entry {
+		display: flex;
+		gap: 20px;
+		padding: 20px 0;
+		border-bottom: 1px solid #f0f0f0;
+	  }
+	  .pub-entry:last-child {
+		border-bottom: none;
+	  }
+	  .pub-thumb {
+		flex-shrink: 0;
+		width: 180px;
+		height: 120px;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		border-radius: 6px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		font-size: 11px;
+		font-weight: 600;
+		text-align: center;
+		padding: 10px;
+		line-height: 1.3;
+		overflow: hidden;
+		position: relative;
+	  }
+	  .pub-thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 6px;
+		transition: transform 0.3s ease;
+	  }
+	  .pub-thumb:hover img {
+		transform: scale(1.05);
+	  }
+	  .pub-thumb .img-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0,0,0,0.3);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		font-size: 11px;
+		font-weight: 600;
+		text-align: center;
+		padding: 10px;
+		line-height: 1.3;
+		border-radius: 6px;
+		backdrop-filter: blur(2px);
+	  }
+	  /* Remove old thumb gradient classes since we now use images */
+	  .pub-thumb.mimicmotion,
+	  .pub-thumb.motr,
+	  .pub-thumb.motrv2,
+	  .pub-thumb.drone,
+	  .pub-thumb.crowded,
+	  .pub-thumb.pedestrian,
+	  .pub-thumb.onlinerefer,
+	  .pub-thumb.motrv3,
+	  .pub-thumb.vlmeval,
+	  .pub-thumb.colorization,
+	  .pub-thumb.shouldershot,
+	  .pub-thumb.optical-flow {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	  }
+
+	  /* Responsive adjustments */
+	  @media (max-width: 700px) {
+		.pub-thumb {
+		  width: 100%;
+		  height: 140px;
+		}
+		.pub-entry.featured .pub-thumb {
+		  width: 100%;
+		  height: 160px;
+		}
+	  }
+	  .pub-info {
+		flex: 1;
+		min-width: 0;
+	  }
+	  .pub-title {
+		font-size: 16px;
+		font-weight: 700;
+		color: #222;
+		margin-bottom: 4px;
+		line-height: 1.4;
+	  }
+	  .pub-title a {
+		color: #1772d0;
+	  }
+	  .pub-title a:hover {
+		color: #f09228;
+	  }
+	  .pub-authors {
+		font-size: 14px;
+		color: #555;
+		margin-bottom: 4px;
+	  }
+	  .pub-authors .me {
+		font-weight: 700;
+		color: #222;
+	  }
+	  .pub-venue {
+		font-size: 14px;
+		color: #888;
+		margin-bottom: 8px;
+	  }
+	  .pub-venue em {
+		font-style: italic;
+	  }
+	  .pub-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px 14px;
+		font-size: 13px;
+	  }
+	  .pub-links a {
+		display: inline-flex;
+		align-items: center;
+		gap: 3px;
+		padding: 2px 10px;
+		border-radius: 4px;
+		background: #f5f5f5;
+		color: #555;
+		transition: all 0.15s;
+		font-weight: 500;
+	  }
+	  .pub-links a:hover {
+		background: #1772d0;
+		color: #fff;
+	  }
+	  .pub-links .star-badge {
+		background: #fff8e1;
+		color: #f5a623;
+		border: 1px solid #ffe082;
+	  }
+	  .pub-links .star-badge:hover {
+		background: #f5a623;
+		color: #fff;
+		border-color: #f5a623;
+	  }
+	  .venue-badge {
+		display: inline-block;
+		background: #e3f2fd;
+		color: #1565c0;
+		font-size: 12px;
+		font-weight: 700;
+		padding: 1px 8px;
+		border-radius: 3px;
+		margin-right: 4px;
+		letter-spacing: 0.3px;
+	  }
+	  .venue-badge.spotlight {
+		background: #fce4ec;
+		color: #c62828;
+	  }
+	  .venue-badge.journal {
+		background: #e8f5e9;
+		color: #2e7d32;
+	  }
+
+	  /* === Featured highlight === */
+	  .pub-entry.featured {
+		background: linear-gradient(135deg, #f8f9ff 0%, #fff5f5 100%);
+		padding: 24px 20px;
+		border-radius: 10px;
+		border: 1px solid #e8eaff;
+		margin: 6px 0;
+	  }
+
+	  /* === Footer === */
+	  footer {
+		text-align: center;
+		padding: 40px 0 20px;
+		color: #aaa;
+		font-size: 13px;
+		border-top: 1px solid #f0f0f0;
+		margin-top: 40px;
+	  }
+	  footer a {
+		color: #999;
+	  }
+
+	  /* === Responsive === */
+	  @media (max-width: 700px) {
+		.container { padding: 15px; }
+		.bio-section { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+		.bio-links { justify-content: center; }
+		.pub-entry { flex-direction: column; }
+		.pub-thumb { width: 100%; height: 100px; }
+		.pub-entry.featured .pub-thumb { width: 100%; height: 100px; }
+	  }
+	</style>
+  </head>
+  <body>
+	<div class="container">
+
+	  <!-- ===== Bio Section ===== -->
+	  <div class="bio-section">
+        <div class="bio-photo">
+          <img src="/images/avatars/github-avatar.jpg" alt="Yuang Zhang" />
+        </div>
+		<div class="bio-text">
+		  <h1>Yuang Zhang</h1>
+		  <p>
+			I am a researcher at <a href="https://www.sjtu.edu.cn/">Shanghai Jiao Tong University</a>.
+			My research focuses on <strong>multi-object tracking</strong>, <strong>video generation</strong>, and <strong>computer vision</strong>.
+		  </p>
+		  <p>
+			I have published at top-tier venues including Nature Machine Intelligence, ICML, CVPR, ECCV, ICCV.
+			My representative works include <a href="https://github.com/Tencent/MimicMotion">MimicMotion</a> for controllable human motion video generation (ICML 2025, ⭐2.5k on GitHub) and the <a href="https://github.com/megvii-research/MOTR">MOTR</a> series for end-to-end multi-object tracking (ECCV 2022 &amp; CVPR 2023).
+		  </p>
+		  <div class="bio-links">
+			<a href="https://scholar.google.com/citations?user=pP5WG9wAAAAJ&hl=en">🎓 Google Scholar</a>
+			<a href="https://github.com/zyayoung">💻 GitHub</a>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- ===== News ===== -->
+	  <h2 class="section-title">Highlights & Achievements</h2>
+	  <ul class="news-list">
+		<li><span class="news-date">[2025-05]</span><span>🏆 <a href="https://github.com/Tencent/MimicMotion">MimicMotion</a> accepted to <strong>ICML 2025</strong> • <span style="color:#f5a623;font-weight:600;">⭐2,539</span> GitHub stars</span></li>
+		<li><span class="news-date">[2025-01]</span><span>🎯 <a href="https://henryhuyu.github.io/DiffPhysDrone_Web/">DiffPhysDrone</a> published in <strong>Nature Machine Intelligence</strong> • Real world 20m/s autonomous flight!</span></li>
+		<li><span class="news-date">[2023-03]</span><span>🚀 <a href="https://github.com/megvii-research/MOTRv2">MOTRv2</a> accepted to <strong>CVPR 2023</strong> • 1st place in DanceTrack Challenge (73.4% HOTA)</span></li>
+		<li><span class="news-date">[2022-07]</span><span>🔍 <a href="https://github.com/megvii-research/MOTR">MOTR</a> accepted to <strong>ECCV 2022</strong> • Pioneer end-to-end tracking with transformer</span></li>
+		<li><span class="news-date">[2022-05]</span><span>👥 <a href="https://github.com/zyayoung/Iter-Deformable-DETR">Iter-DETR</a> accepted to <strong>CVPR 2022</strong> • Progressive detection in crowded scenes</span></li>
+		<li><span class="news-date">[Ongoing]</span><span>👨‍💻 Open-source projects with 3,800+ total stars • 1900 citations (Google Scholar)</span></li>
+	  </ul>
+
+	  <!-- ===== Selected Publications ===== -->
+	  <h2 class="section-title">Selected Publications</h2>
+
+	  <!-- MimicMotion -->
+	  <div class="pub-entry">
+        <div class="pub-thumb">
+          <img src="/images/papers/mimicmotion.gif" alt="MimicMotion preview" />
+          <!-- <div class="img-overlay">🎬 ICML 2025</div> -->
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2406.19680">MimicMotion: High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance</a>
+		  </div>
+		  <div class="pub-authors">
+			<span class="me">Yuang Zhang</span>, Jiaxi Gu, Li-Wen Wang, Han Wang, Junqi Cheng, Yuefeng Zhu, Fangyuan Zou
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge spotlight">ICML 2025</span>
+			<em>International Conference on Machine Learning</em> &nbsp;·&nbsp; Cited by 182
+		  </div>
+		  <div class="pub-links">
+			<a href="https://tencent.github.io/MimicMotion/">🌐 Project Page</a>
+			<a href="https://arxiv.org/abs/2406.19680">📄 Paper</a>
+			<a href="https://github.com/Tencent/MimicMotion" class="star-badge">⭐ 2,539 Stars</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- ShoulderShot -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(26,188,156,0.3);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">🎥 ShoulderShot</div>
+              <div style="font-size: 9px; opacity: 0.9;">Over-the-Shoulder<br>Dialogue Videos</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2508.07597">ShoulderShot: Generating Over-the-Shoulder Dialogue Videos</a>
+		  </div>
+		  <div class="pub-authors">
+			<span class="me">Yuang Zhang</span>, Junqi Cheng, Haoyu Zhao, Jiaxi Gu, Fangyuan Zou, Zhen Lu, Pengfei Shu
+		  </div>
+		  <div class="pub-venue">
+			<em>arXiv preprint arXiv:2508.07597</em>
+		  </div>
+		  <div class="pub-links">
+			<a href="https://shouldershot.github.io">🌐 Project Page</a>
+			<a href="https://arxiv.org/abs/2508.07597">📄 Paper</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- Consistent Video Colorization -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(231,76,60,0.3);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">🎨 Video Color</div>
+              <div style="font-size: 9px; opacity: 0.9;">Palette-Guided<br>Consistency</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2501.19331">Consistent Video Colorization via Palette Guidance</a>
+		  </div>
+		  <div class="pub-authors">
+			Han Wang, <span class="me">Yuang Zhang</span>, Yichen Zhang, Lelin Lu, Liansheng Song
+		  </div>
+		  <div class="pub-venue">
+			<em>arXiv preprint arXiv:2501.19331</em>
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2501.19331">📄 Paper</a>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- MOTR -->
+	  <div class="pub-entry">
+        <div class="pub-thumb">
+          <img src="/images/papers/motr.jpg" alt="MOTR framework" />
+          <!-- <div class="img-overlay">🔍 ECCV 2022</div> -->
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2105.03247">MOTR: End-to-End Multiple-Object Tracking with Transformer</a>
+		  </div>
+		  <div class="pub-authors">
+			Fangao Zeng, Bin Dong, <span class="me">Yuang Zhang</span>, Tiancai Wang, Xiangyu Zhang, Yichen Wei
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge">ECCV 2022</span>
+			<em>European Conference on Computer Vision</em> &nbsp;·&nbsp; Cited by 963
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2105.03247">📄 Paper</a>
+			<a href="https://github.com/megvii-research/MOTR" class="star-badge">⭐ 783 Stars</a>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- MOTRv2 -->
+	  <div class="pub-entry">
+        <div class="pub-thumb">
+          <img src="/images/papers/motrv2-demo.jpg" alt="MOTRv2 demo" />
+          <!-- <div class="img-overlay">🚀 CVPR 2023</div> -->
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2211.09791">MOTRv2: Bootstrapping End-to-End Multi-Object Tracking by Pretrained Object Detectors</a>
+		  </div>
+		  <div class="pub-authors">
+			<span class="me">Yuang Zhang</span>, Tiancai Wang, Xiangyu Zhang
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge">CVPR 2023</span>
+			<em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em> &nbsp;·&nbsp; Cited by 324
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2211.09791">📄 Paper</a>
+			<a href="https://github.com/megvii-research/MOTRv2" class="star-badge">⭐ 472 Stars</a>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- DiffPhysDrone -->
+	  <div class="pub-entry">
+        <div class="pub-thumb">
+          <img src="/images/papers/diffphys-drone.gif" alt="DiffPhysDrone drone" />
+          <!-- <div class="img-overlay">🚁 Nat. Mach. Intell.</div> -->
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://www.nature.com/articles/s42256-025-01048-0">Learning Vision-Based Agile Flight via Differentiable Physics</a>
+		  </div>
+		  <div class="pub-authors">
+			<span class="me">Yuang Zhang</span>, Yujie Hu, Yuhan Song, Danping Zou, Weijian Lin
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge journal">Nat. Mach. Intell. 2025</span>
+			<em>Nature Machine Intelligence</em> 7 (6), 954-966 &nbsp;·&nbsp; Cited by 53
+		  </div>
+		  <div class="pub-links">
+			<a href="https://henryhuyu.github.io/DiffPhysDrone_Web/">🌐 Project Page</a>
+			<a href="https://www.nature.com/articles/s42256-025-01048-0">📄 Paper</a>
+			<a href="https://www.bilibili.com/video/BV1sgMqzSExJ/#reply114692001367142">📺 Bilibili</a>
+			<a href="https://github.com/HenryHuYu/DiffPhysDrone" class="star-badge">⭐ 467 Stars</a>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- Progressive End-to-End Object Detection in Crowded Scenes -->
+	  <div class="pub-entry">
+        <div class="pub-thumb">
+          <img src="/images/papers/iter-deformable-detr.jpg" alt="Crowded scene detection" />
+          <!-- <div class="img-overlay">👥 CVPR 2022</div> -->
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2203.07669">Progressive End-to-End Object Detection in Crowded Scenes</a>
+		  </div>
+		  <div class="pub-authors">
+			Anlin Zheng, <span class="me">Yuang Zhang</span>, Xiangyu Zhang, Xiaojuan Qi, Jian Sun
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge">CVPR 2022</span>
+			<em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em> &nbsp;·&nbsp; Cited by 108
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2203.07669">📄 Paper</a>
+			<a href="https://github.com/zyayoung/Iter-Deformable-DETR" class="star-badge">⭐ 32 Stars</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- OnlineRefer -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(255,255,255,0.1);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">🎯 OnlineRefer</div>
+              <div style="font-size: 9px; opacity: 0.9;">Real-time Video<br>Object Segmentation</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2307.09356">OnlineRefer: A Simple Online Baseline for Referring Video Object Segmentation</a>
+		  </div>
+		  <div class="pub-authors">
+			Dongming Wu, Tiancai Wang, <span class="me">Yuang Zhang</span>, Xiangyu Zhang, Jianbing Shen
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge">ICCV 2023</span>
+			<em>IEEE/CVF International Conference on Computer Vision</em> &nbsp;·&nbsp; Cited by 103
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2308.07661">📄 Paper</a>
+			<a href="https://github.com/wudongming97/OnlineRefer" class="star-badge">⭐ GitHub</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- MOTRv3 -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.3); box-shadow: inset 0 0 25px rgba(52,152,219,0.3);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">🚀 MOTRv3</div>
+              <div style="font-size: 9px; opacity: 0.9;">Release-Fetch<br>Supervision</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2305.14298">MOTRv3: Release-Fetch Supervision for End-to-End Multi-Object Tracking</a>
+		  </div>
+		  <div class="pub-authors">
+			En Yu, Tiancai Wang, Zhuoling Li, <span class="me">Yuang Zhang</span>, Xiangyu Zhang, Wenbing Tao
+		  </div>
+		  <div class="pub-venue">
+			<em>arXiv preprint arXiv:2305.14298</em> &nbsp;·&nbsp; Cited by 69
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2305.14298">📄 Paper</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- Variational Pedestrian Detection -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(46,204,113,0.3);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">🚶 Variational</div>
+              <div style="font-size: 9px; opacity: 0.9;">Pedestrian<br>Detection</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://openaccess.thecvf.com/content/CVPR2021/html/Zhang_Variational_Pedestrian_Detection_CVPR_2021_paper.html">Variational Pedestrian Detection</a>
+		  </div>
+		  <div class="pub-authors">
+			<span class="me">Yuang Zhang</span>, He He, Jianguo Li, Yumin Li, John See, Weiyao Lin
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge">CVPR 2021</span>
+			<em>IEEE/CVF Conference on Computer Vision and Pattern Recognition</em> &nbsp;·&nbsp; Cited by 56
+		  </div>
+		  <div class="pub-links">
+			<a href="https://openaccess.thecvf.com/content/CVPR2021/html/Zhang_Variational_Pedestrian_Detection_CVPR_2021_paper.html">📄 Paper</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- Seeing through pixel motion -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(155,89,182,0.3);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">👁️ Pixel Motion</div>
+              <div style="font-size: 9px; opacity: 0.9;">Optical Flow<br>Obstacle Avoidance</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2411.04413">Seeing Through Pixel Motion: Learning Obstacle Avoidance from Optical Flow with One Camera</a>
+		  </div>
+		  <div class="pub-authors">
+			Yujie Hu, <span class="me">Yuang Zhang</span>, Yuhan Song, Yilin Deng, Fei Yu, Lele Zhang, Weijian Lin, Danping Zou, Wei Yu
+		  </div>
+		  <div class="pub-venue">
+			<span class="venue-badge journal">RA-L 2025</span>
+			<em>IEEE Robotics and Automation Letters</em> &nbsp;·&nbsp; Cited by 19
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2409.09908">📄 Paper</a>
+		  </div>
+		</div>
+	  </div>
+
+      <!-- VLM-Eval -->
+      <div class="pub-entry">
+        <div class="pub-thumb">
+          <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%); border-radius: 6px; color: white; font-size: 11px; font-weight: 700; text-align: center; padding: 10px; line-height: 1.3; text-shadow: 0 1px 2px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(243,156,18,0.3);">
+            <div>
+              <div style="font-size: 13px; margin-bottom: 4px;">📊 VLM-Eval</div>
+              <div style="font-size: 9px; opacity: 0.9;">Video LLM<br>Evaluation</div>
+            </div>
+          </div>
+        </div>
+		<div class="pub-info">
+		  <div class="pub-title">
+			<a href="https://arxiv.org/abs/2311.11865">VLM-Eval: A General Evaluation on Video Large Language Models</a>
+		  </div>
+		  <div class="pub-authors">
+			Shuailin Li, <span class="me">Yuang Zhang</span>, Yucheng Zhao, Qiuyue Wang, Fan Jia, Yingfei Liu, Tiancai Wang
+		  </div>
+		  <div class="pub-venue">
+			<em>arXiv preprint arXiv:2311.11865</em> &nbsp;·&nbsp; Cited by 12
+		  </div>
+		  <div class="pub-links">
+			<a href="https://arxiv.org/abs/2311.11865">📄 Paper</a>
+			<a href="https://github.com/zyayoung/Awesome-Video-LLMs" class="star-badge">⭐ 37 Stars</a>
+		  </div>
+		</div>
+	  </div>
+
+	  <!-- ===== All Publications link ===== -->
+	  <p style="text-align: center; margin-top: 24px; font-size: 15px; color: #888;">
+		For a full list of publications, please visit my
+		<a href="https://scholar.google.com/citations?user=pP5WG9wAAAAJ&hl=en">Google Scholar</a> profile.
+	  </p>
+
+	  <!-- ===== Open Source ===== -->
+	  <h2 class="section-title">Open Source Projects</h2>
+	  <p style="color:#666; margin-bottom: 20px; font-size: 15px;">Maintain 6+ open-source repositories with <span style="font-weight:600;">3,800+ stars</span> across projects. Featured in top-tier conferences.</p>
+	  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+
+        <a href="https://github.com/Tencent/MimicMotion" style="display: block; padding: 20px; border: 1px solid #eee; border-radius: 10px; transition: all 0.2s; background: linear-gradient(135deg, #fff 0%, #fff8f8 100%); text-decoration: none;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 16px rgba(245,166,35,0.15)'; this.style.borderColor='#ffd6cc'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='#eee'">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <img src="/images/papers/mimicmotion.gif" alt="" style="width: 32px; height: 32px;" />
+            <div>
+              <div style="font-weight: 700; font-size: 16px; color: #222;">🎬 MimicMotion</div>
+              <div style="font-size: 13px; color: #888;">ICML 2025 (Spotlight)</div>
+            </div>
+          </div>
+		  <div style="font-size: 14px; color: #555; margin-bottom: 14px;">High-quality human motion video generation with confidence-aware pose guidance</div>
+		  <div style="display: flex; justify-content: space-between; align-items: center;">
+			<div style="font-size: 14px; color: #f5a623; font-weight: 700;">⭐ 2,539</div>
+			<div style="font-size: 13px; color: #777;">🎯 Project: <span style="color:#1772d0;">tencent.github.io/MimicMotion</span></div>
+		  </div>
+		</a>
+
+        <a href="https://github.com/megvii-research/MOTR" style="display: block; padding: 20px; border: 1px solid #eee; border-radius: 10px; transition: all 0.2s; background: linear-gradient(135deg, #fff 0%, #f8faff 100%); text-decoration: none;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 16px rgba(23,114,208,0.15)'; this.style.borderColor='#ccdfff'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='#eee'">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <img src="/images/papers/motr.jpg" alt="" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;" />
+            <div>
+              <div style="font-weight: 700; font-size: 16px; color: #222;">🔍 MOTR</div>
+              <div style="font-size: 13px; color: #888;">ECCV 2022</div>
+            </div>
+          </div>
+		  <div style="font-size: 14px; color: #555; margin-bottom: 14px;">End-to-end multiple-object tracking with transformer • Cited by 963</div>
+		  <div style="display: flex; justify-content: space-between; align-items: center;">
+			<div style="font-size: 14px; color: #f5a623; font-weight: 700;">⭐ 783</div>
+			<div style="font-size: 13px; color: #777;">📊 Framework: <span style="color:#1772d0;">figs/motr.png</span></div>
+		  </div>
+		</a>
+
+		<a href="https://github.com/megvii-research/MOTRv2" style="display: block; padding: 20px; border: 1px solid #eee; border-radius: 10px; transition: all 0.2s; background: linear-gradient(135deg, #fff 0%, #f8fff8 100%); text-decoration: none;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 16px rgba(67,233,123,0.15)'; this.style.borderColor='#d0ffd6'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='#eee'">
+		  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+			<img src="https://raw.githubusercontent.com/zyayoung/oss/main/motrv2_main.jpg" alt="" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;" />
+			<div>
+			  <div style="font-weight: 700; font-size: 16px; color: #222;">🚀 MOTRv2</div>
+			  <div style="font-size: 13px; color: #888;">CVPR 2023</div>
+			</div>
+		  </div>
+		  <div style="font-size: 14px; color: #555; margin-bottom: 14px;">1st place in DanceTrack Challenge (73.4% HOTA) • 324 citations</div>
+		  <div style="display: flex; justify-content: space-between; align-items: center;">
+			<div style="font-size: 14px; color: #f5a623; font-weight: 700;">⭐ 472</div>
+			<div style="font-size: 13px; color: #777;">🎬 Demo: <span style="color:#1772d0;">2_motrv2.gif</span></div>
+		  </div>
+		</a>
+
+		<a href="https://github.com/HenryHuYu/DiffPhysDrone" style="display: block; padding: 20px; border: 1px solid #eee; border-radius: 10px; transition: all 0.2s; background: linear-gradient(135deg, #fff 0%, #fff5f5 100%); text-decoration: none;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 16px rgba(250,112,154,0.15)'; this.style.borderColor='#ffd6e0'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='#eee'">
+		  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+			<img src="https://github.com/HenryHuYu/DiffPhysDrone/blob/master/gifs/20ms.gif?raw=true" alt="" style="width: 32px; height: 32px; object-fit: cover; border-radius: 4px;" />
+			<div>
+			  <div style="font-weight: 700; font-size: 16px; color: #222;">🚁 DiffPhysDrone</div>
+			  <div style="font-size: 13px; color: #888;">Nature Machine Intelligence</div>
+			</div>
+		  </div>
+		  <div style="font-size: 14px; color: #555; margin-bottom: 14px;">First real quadrotor trained via differentiable physics • 53 citations</div>
+		  <div style="display: flex; justify-content: space-between; align-items: center;">
+			<div style="font-size: 14px; color: #f5a623; font-weight: 700;">⭐ 467</div>
+			<div style="font-size: 13px; color: #777;">🌐 Project: <span style="color:#1772d0;">henryhuyu.github.io/DiffPhysDrone_Web</span></div>
+		  </div>
+		</a>
+
+		<a href="https://github.com/zyayoung" style="display: block; padding: 20px; border: 1px solid #eee; border-radius: 10px; transition: all 0.2s; background: linear-gradient(135deg, #fff 0%, #f5f8ff 100%); text-decoration: none;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 6px 16px rgba(161,196,253,0.15)'; this.style.borderColor='#ccdfff'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='#eee'">
+		  <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+			<img src="https://avatars.githubusercontent.com/u/6887683?v=4" alt="" style="width: 32px; height: 32px; border-radius: 50%;" />
+			<div>
+			  <div style="font-weight: 700; font-size: 16px; color: #222;">💻 All Projects</div>
+			  <div style="font-size: 13px; color: #888;">GitHub Profile</div>
+			</div>
+		  </div>
+		  <div style="font-size: 14px; color: #555; margin-bottom: 14px;">View all open-source contributions, including variational detection, online video segmentation, and more</div>
+		  <div style="display: flex; justify-content: space-between; align-items: center;">
+			<div style="font-size: 14px; color: #1772d0; font-weight: 700;">📂 10+ Repositories</div>
+			<div style="font-size: 13px; color: #777;">⭐ 3,800+ total stars</div>
+		  </div>
+		</a>
+
+	  </div>
+
+	  <!-- ===== Footer ===== -->
+	  <footer>
+		<p>© 2026 Yuang Zhang · Built with <a href="https://astro.build/">Astro</a> · Hosted on <a href="https://pages.github.com/">GitHub Pages</a></p>
+		<p style="margin-top: 4px;">Design inspired by <a href="https://jonbarron.info/">Jon Barron</a></p>
+	  </footer>
+
+	</div>
+  </body>
 </html>

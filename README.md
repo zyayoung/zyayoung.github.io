@@ -1,43 +1,119 @@
-# Astro Starter Kit: Minimal
+# Yuang Zhang - Academic Personal Homepage
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A professional academic personal homepage built with Astro, designed for computer vision researchers. This site showcases academic achievements, research interests, publications, and contact information.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🎯 Features
 
-## 🚀 Project Structure
+- **Modern Design**: Clean, responsive design that reflects academic professionalism
+- **Academic Statistics**: Display of citations, publications, h-index, and i10-index
+- **Research Showcase**: Highlighted research interests and selected publications
+- **Education Background**: Academic history and achievements
+- **Contact Information**: Professional contact details and links to academic profiles
+- **Skills & Tools**: Technical expertise and research tools
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Live Demo
+
+The site is available at: [https://zyayoung.github.io](https://zyayoung.github.io)
+
+## 🏗️ Project Structure
 
 ```text
 /
-├── public/
+├── .github/workflows/    # GitHub Actions deployment configuration
+├── public/              # Static assets (favicon, images, etc.)
 ├── src/
 │   └── pages/
-│       └── index.astro
-└── package.json
+│       └── index.astro  # Main homepage with academic profile
+├── astro.config.mjs     # Astro configuration for GitHub Pages
+└── package.json         # Dependencies and scripts
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧞 Available Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+All commands are run from the root of the project:
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server                          |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally                       |
+| `npm run deploy`       | Build and deploy to GitHub Pages (manual)        |
 
-## 🧞 Commands
+## 🌐 Deployment to GitHub Pages
 
-All commands are run from the root of the project, from a terminal:
+This site is configured for automatic deployment to GitHub Pages:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Automatic Deployment
 
-## 👀 Want to learn more?
+1. Push your changes to the `main` branch
+2. GitHub Actions will automatically:
+   - Install dependencies
+   - Build the Astro site
+   - Deploy to GitHub Pages
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Manual Deployment
+
+If you want to deploy manually:
+
+```bash
+npm run build
+npm run deploy
+```
+
+### Environment Setup
+
+The following environment configurations are already set:
+
+- **GitHub Pages Source**: `gh-pages` branch or `GitHub Actions`
+- **Custom Domain**: Configured via `CNAME` file (if needed)
+- **Build Directory**: `./dist`
+
+## 📝 Customization Guide
+
+### Personal Information
+
+Edit the following in `src/pages/index.astro`:
+
+1. **Name and Title**: Update the `<h1>` and `<h2>` elements
+2. **Institution and Email**: Update the contact information
+3. **Academic Statistics**: Update the citation and publication numbers
+4. **Research Interests**: Modify the research areas and descriptions
+5. **Publications**: Add or update your selected publications
+6. **Education**: Update your academic background
+
+### Styling
+
+The site uses a custom CSS color scheme with:
+- **Primary Color**: `#2c3e50` (dark blue)
+- **Secondary Color**: `#3498db` (light blue)
+- **Accent Color**: `#e74c3c` (red)
+
+You can modify the CSS variables in the `<style>` tag to change the color scheme.
+
+## 🎨 Design Philosophy
+
+This academic homepage is designed with the following principles:
+
+1. **Clarity Over Complexity**: Information is presented in a clear, organized manner
+2. **Responsive Design**: Works well on all devices from mobile to desktop
+3. **Academic Professionalism**: Clean, modern design that reflects research excellence
+4. **Performance Focus**: Fast loading with minimal JavaScript
+5. **Accessibility**: Semantic HTML and proper contrast ratios
+
+## 📚 Technology Stack
+
+- **Framework**: [Astro](https://astro.build) - Modern static site generator
+- **Hosting**: [GitHub Pages](https://pages.github.com) - Free static site hosting
+- **CI/CD**: [GitHub Actions](https://github.com/features/actions) - Automated deployment
+- **Styling**: Custom CSS with modern CSS features
+
+## 🔗 Useful Links
+
+- [Astro Documentation](https://docs.astro.build)
+- [GitHub Pages Documentation](https://docs.github.com/en/pages)
+- [Google Scholar Profile](https://scholar.google.com/citations?user=pP5WG9wAAAAJ&hl=en)
+
+## 📄 License
+
+This project is open source and available under the MIT License.
